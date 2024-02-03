@@ -13,8 +13,6 @@
 //
 // No hints this time ;)
 
-// I AM NOT DONE
-
 // Put your function here!
 // fn calculate_price_of_apples {
 
@@ -30,4 +28,10 @@ fn verify_test() {
     assert_eq!(80, price2);
     assert_eq!(41, price3);
     assert_eq!(65, price4);
+}
+
+fn calculate_price_of_apples(apples: usize) -> usize {
+    let cost_per_apple = if apples > 40 { 1 } else { 2 };
+
+    apples * cost_per_apple
 }

@@ -3,7 +3,7 @@
 // Say we're writing a game where you can buy items with tokens. All items cost
 // 5 tokens, and whenever you purchase items there is a processing fee of 1
 // token. A player of the game will type in how many items they want to buy, and
-// the `total_cost` function will calculate the total cost of the items. Since
+// the `total_cost` function will calculate the total cost of the tokens. Since
 // the player typed in the quantity, though, we get it as a string-- and they
 // might have typed anything, not just numbers!
 //
@@ -19,8 +19,6 @@
 // Execute `rustlings hint errors2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 use std::num::ParseIntError;
 
 pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
@@ -28,7 +26,10 @@ pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
     let cost_per_item = 5;
     let qty = item_quantity.parse::<i32>();
 
-    Ok(qty * cost_per_item + processing_fee)
+    match qty {
+        Result::Ok(qty) => Ok(qty * cost_per_item + processing_fee),
+        Result::Err(err) => Err(err),
+    }
 }
 
 #[cfg(test)]
